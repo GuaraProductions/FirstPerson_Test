@@ -1,12 +1,12 @@
-extends KinematicBody
+extends CharacterBody3D
 
-export(PackedScene) var pause_menu
+@export var pause_menu: PackedScene
 
-export var MAX_SPEED = 10
-export var FRICTION  = 16
+@export var MAX_SPEED = 10
+@export var FRICTION  = 16
 
-onready var camera     = $Camera
-onready var flashlight = $SpotLight
+@onready var camera     = $Camera3D
+@onready var flashlight = $SpotLight3D
 
 var direction_vector = Vector3.ZERO
 var velocity_vector  = Vector3.ZERO
@@ -49,12 +49,14 @@ func _physics_process(delta : float) -> void:
 		
 		velocity_vector.y = 0
 		var movement_speed = direction_vector * MAX_SPEED
-		velocity_vector = velocity_vector.linear_interpolate(movement_speed, FRICTION * delta)
+		velocity_vector = velocity_vector.lerp(movement_speed, FRICTION * delta)
 		
 	else:
 		velocity_vector = Vector3.ZERO
 		
-	velocity_vector = move_and_slide(velocity_vector)
+	set_velocity(velocity_vector)
+	move_and_slide()
+	velocity_vector = velocity
 
 func _translate_input_to_camera(input : Vector2) -> Vector3 :
 	

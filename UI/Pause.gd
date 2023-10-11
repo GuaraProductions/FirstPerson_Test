@@ -15,7 +15,7 @@ func _on_Continue_pressed():
 	
 func _on_Back_to_Menu_pressed():
 	get_tree().paused = false
-	get_tree().change_scene("res://UI/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://UI/MainMenu.tscn")
 	self.queue_free()
 	
 func _on_Quit_pressed():

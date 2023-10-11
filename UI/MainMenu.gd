@@ -6,7 +6,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_Play_pressed():
-	get_tree().change_scene("res://Scenes/Scene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Scene.tscn")
 
 func _on_Quit_pressed():
 	get_tree().quit()
