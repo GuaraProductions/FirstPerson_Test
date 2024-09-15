@@ -28,7 +28,7 @@ func _input(event):
 		
 	if event.is_action_pressed("ui_home"):
 		
-		var pause_menu_instance = pause_menu.instance()
+		var pause_menu_instance = pause_menu.instantiate()
 		get_tree().get_root().call_deferred("add_child", pause_menu_instance)
 		
 	if event.is_action_pressed("toggle_flashlight"):
