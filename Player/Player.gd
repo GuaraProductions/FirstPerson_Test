@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var FRICTION  = 16
 
 @onready var camera     = $Camera3D
-@onready var flashlight = $SpotLight3D
+@onready var flashlight = $Camera3D/SpotLight3D
 
 var direction_vector = Vector3.ZERO
 var velocity_vector  = Vector3.ZERO
@@ -22,9 +22,6 @@ func _input(event):
 		var x_rotation = -event.relative.y * mouse_sensitivity
 		camera.rotate_x(x_rotation)
 		camera.rotation.x = clamp(camera.rotation.x, -1.2, 1.2)
-		
-		flashlight.rotate_x(x_rotation)
-		flashlight.rotation.x = clamp(flashlight.rotation.x, -1.2,1.2)
 		
 	if event.is_action_pressed("ui_home"):
 		
