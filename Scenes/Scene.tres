@@ -1,0 +1,20 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://ckph20vwcww3n"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2qe5"]
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_o3ech"]
+sky_material = SubResource("ProceduralSkyMaterial_h2qe5")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_o3ech")
+tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_bloom = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01

@@ -1,72 +1,89 @@
-extends CharacterBody3D
+extends CharacterBody3D 
 
-@export var pause_menu: PackedScene
+@export var MAX_SPEED = 10  # Maximum speed for the character's movement.
+@export var FRICTION = 16  # Controls how quickly the character slows down when not moving.
+@export var JUMP_VELOCITY = 150  # Initial upward velocity when the character jumps.
 
-@export var MAX_SPEED = 10
-@export var FRICTION  = 16
+@onready var camera = $Camera 
+@onready var flashlight = $Camera/SpotLight  
+@onready var animation_tree = $AnimationTree  
+@onready var animation_state = animation_tree.get("parameters/playback") 
 
-@onready var camera     = $Camera3D
-@onready var flashlight = $Camera3D/SpotLight3D
+var mouse_sensitivity = 0.006  # Determines how fast the camera reacts to mouse movement.
+var pitch = 0.0  # Tracks the vertical rotation (pitch) of the camera to control its up/down tilt.
 
-var direction_vector = Vector3.ZERO
-var velocity_vector  = Vector3.ZERO
+func _ready() -> void:
+	# Enable the AnimationTree to start playing animations.
+	animation_tree.active = true
 
-var mouse_sensitivity = 0.006
+func _unhandled_input(event: InputEvent) -> void:
 
-func _input(event):
-	
 	if event is InputEventMouseMotion:
-
+		# Horizontal rotation (yaw) controls the character turning left or right.
 		rotate_y(-event.relative.x * mouse_sensitivity)
+
+		# Vertical rotation (pitch) controls the camera looking up or down.
+		pitch -= event.relative.y * mouse_sensitivity
+		pitch = clamp(pitch, -1.2, 1.2)  # Clamp the pitch to prevent the camera from flipping.
 		
-		var x_rotation = -event.relative.y * mouse_sensitivity
-		camera.rotate_x(x_rotation)
-		camera.rotation.x = clamp(camera.rotation.x, -1.2, 1.2)
-		
-	if event.is_action_pressed("ui_home"):
-		
-		var pause_menu_instance = pause_menu.instantiate()
-		get_tree().get_root().call_deferred("add_child", pause_menu_instance)
-		
+		# Update the camera's X rotation using the clamped pitch value.
+		camera.rotation_degrees.x = rad_to_deg(pitch)
+
 	if event.is_action_pressed("toggle_flashlight"):
-		
+		# Toggles the flashlight visibility when the corresponding action is pressed.
 		flashlight.visible = !flashlight.visible
 
-func _physics_process(delta : float) -> void:
-	
-	var input_vector = Vector2.ZERO
-	
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down")  - Input.get_action_strength("ui_up")
-	input_vector = input_vector.normalized()
-	
-	if input_vector != Vector2.ZERO:
-		
-		direction_vector = _translate_input_to_camera(input_vector)
-		
-		velocity_vector.y = 0
-		var movement_speed = direction_vector * MAX_SPEED
-		velocity_vector = velocity_vector.lerp(movement_speed, FRICTION * delta)
-		
-	else:
-		velocity_vector = Vector3.ZERO
-		
-	set_velocity(velocity_vector)
-	move_and_slide()
-	velocity_vector = velocity
+func _physics_process(delta: float) -> void:
+	# This function is called every physics frame to handle character movement and interactions.
 
-func _translate_input_to_camera(input : Vector2) -> Vector3 :
+	# Apply gravity if the character is not on the floor.
+	if not is_on_floor():
+		velocity += get_gravity() * delta  # Gravity is added to the Y component of the velocity.
+
+	# Gather input from the keyboard and normalize it for consistent movement.
+	var input_vector = Vector2(
+		Input.get_action_strength("game_right") - Input.get_action_strength("game_left"),  # Horizontal input.
+		Input.get_action_strength("game_down") - Input.get_action_strength("game_up")  # Vertical input.
+	).normalized()
+
+	# Handle jumping when the character is on the floor.
+	#if is_on_floor() and Input.is_action_just_pressed("game_jump"):
+	#	velocity.y = JUMP_VELOCITY  # Set the upward velocity for the jump.
+
+	# Handle movement logic.
+	if input_vector != Vector2.ZERO:  # If there is input, the character should move.
+		animation_state.travel("Walk")  # Switch to the "Walk" animation.
+
+		var direction_vector = _translate_input_to_camera(input_vector)
+		var movement_speed = direction_vector * MAX_SPEED  # Scale the direction by the maximum speed.
+
+		# Smoothly transition the velocity toward the movement speed using linear interpolation (lerp).
+		velocity = velocity.lerp(movement_speed, FRICTION * delta)
+	else:
+		animation_state.travel("Idle")  # If there is no input, play the "Idle" animation.
+
+		# Gradually reduce the velocity to zero for smooth stopping.
+		velocity = velocity.lerp(Vector3.ZERO, FRICTION * delta)
 	
-	var camera_pos   = camera.get_global_transform().basis
-	var direction = Vector3.ZERO 
-	
+	# Move the character while allowing it to slide along surfaces.
+	move_and_slide()
+
+# Converts a 2D input vector into a 3D direction vector based on the camera's orientation.
+func _translate_input_to_camera(input: Vector2) -> Vector3:
+
+	var camera_pos = camera.get_global_transform().basis  # Get the camera's transformation basis.
+	var direction = Vector3.ZERO  # Initialize the direction vector.
+
+	# Add the forward/backward component (Z-axis).
 	direction += camera_pos.z * input.y
-	direction += camera_pos.x * input.x 
-	
+
+	# Add the left/right component (X-axis).
+	direction += camera_pos.x * input.x
+
+	# Ignore any vertical movement (Y-axis) to ensure movement stays on the horizontal plane.
 	direction.y = 0
+
+	# Normalize the direction vector to ensure consistent movement speed.
 	direction = direction.normalized()
 	
 	return direction
-	
-	
-	

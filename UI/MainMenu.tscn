@@ -1,45 +1,42 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://d4ay6jhnlfkal"]
 
-[ext_resource path="res://UI/MainMenu.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://UI/MainMenu.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://b8fodmq3kvjsy" path="res://Scenes/Scene.tscn" id="2_grdn0"]
+[ext_resource type="LabelSettings" uid="uid://b1d1flvpxn38c" path="res://UI/Titlecard.tres" id="3_wgjxj"]
+[ext_resource type="PackedScene" uid="uid://d1bvmewrcmwdj" path="res://UI/CustomButton.tscn" id="4_pjkfk"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 35
+script = ExtResource("1")
+main_scene_scene = ExtResource("2_grdn0")
 
-[node name="Content" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_constants/separation = 20
-
-[node name="VSplitContainer" type="VSplitContainer" parent="Content"]
-offset_right = 1024.0
-split_offset = 100
-
-[node name="Label" type="Label" parent="Content"]
-offset_left = 458.0
-offset_top = 20.0
-offset_right = 565.0
-offset_bottom = 34.0
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
 text = "First Person Test"
-valign = 2
+label_settings = ExtResource("3_wgjxj")
+vertical_alignment = 2
 
-[node name="Play" type="Button" parent="Content"]
-offset_left = 493.0
-offset_top = 54.0
-offset_right = 531.0
-offset_bottom = 74.0
-size_flags_horizontal = 4
-text = "Play"
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 36
 
-[node name="Quit" type="Button" parent="Content"]
-offset_left = 492.0
-offset_top = 94.0
-offset_right = 532.0
-offset_bottom = 114.0
-size_flags_horizontal = 4
-text = "Quit"
+[node name="StartGame" parent="Buttons" instance=ExtResource("4_pjkfk")]
+layout_mode = 2
+text = "Start Game"
 
-[connection signal="pressed" from="Content/Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="Content/Quit" to="." method="_on_Quit_pressed"]
+[node name="Quit" parent="Buttons" instance=ExtResource("4_pjkfk")]
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="Buttons/StartGame" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]

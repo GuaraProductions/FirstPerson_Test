@@ -1,72 +1,54 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://j60dqsg5mgoa"]
 
-[ext_resource path="res://UI/Pause.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://UI/Pause.gd" id="1"]
+[ext_resource type="LabelSettings" uid="uid://b1d1flvpxn38c" path="res://UI/Titlecard.tres" id="2_ehhvs"]
+[ext_resource type="PackedScene" uid="uid://d1bvmewrcmwdj" path="res://UI/CustomButton.tscn" id="3_ukk3w"]
 
-[node name="Pause" type="Control"]
+[node name="Pause" type="MarginContainer"]
 process_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="Background" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.160784 )
+layout_mode = 2
+color = Color(0, 0, 0, 0.160784)
 
 [node name="Content" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Content"]
-offset_right = 1024.0
-offset_bottom = 50.0
-custom_minimum_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [node name="Label" type="Label" parent="Content"]
-offset_left = 493.0
-offset_top = 54.0
-offset_right = 531.0
-offset_bottom = 68.0
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Pause"
-align = 1
+label_settings = ExtResource("2_ehhvs")
+horizontal_alignment = 1
 
 [node name="HSplitContainer2" type="HSplitContainer" parent="Content"]
-offset_top = 72.0
-offset_right = 1024.0
-offset_bottom = 122.0
-custom_minimum_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [node name="Buttons" type="VBoxContainer" parent="Content"]
-offset_top = 126.0
-offset_right = 1024.0
-offset_bottom = 260.0
+layout_mode = 2
 theme_override_constants/separation = 37
 alignment = 1
 
-[node name="Continue" type="Button" parent="Content/Buttons"]
-offset_left = 477.0
-offset_right = 546.0
-offset_bottom = 20.0
-size_flags_horizontal = 4
-text = "Continue"
+[node name="Continue" parent="Content/Buttons" instance=ExtResource("3_ukk3w")]
+layout_mode = 2
 
-[node name="Back to Menu" type="Button" parent="Content/Buttons"]
-offset_left = 462.0
-offset_top = 57.0
-offset_right = 561.0
-offset_bottom = 77.0
-size_flags_horizontal = 4
-text = "Back to Menu"
+[node name="MainMenu" parent="Content/Buttons" instance=ExtResource("3_ukk3w")]
+layout_mode = 2
+text = "Go to Main Menu"
 
-[node name="Quit" type="Button" parent="Content/Buttons"]
-offset_left = 492.0
-offset_top = 114.0
-offset_right = 532.0
-offset_bottom = 134.0
-size_flags_horizontal = 4
-text = "Quit"
+[node name="Quit" parent="Content/Buttons" instance=ExtResource("3_ukk3w")]
+layout_mode = 2
+text = "Quit to Desktop"
 
 [connection signal="pressed" from="Content/Buttons/Continue" to="." method="_on_Continue_pressed"]
-[connection signal="pressed" from="Content/Buttons/Back to Menu" to="." method="_on_Back_to_Menu_pressed"]
+[connection signal="pressed" from="Content/Buttons/MainMenu" to="." method="_on_Back_to_Menu_pressed"]
 [connection signal="pressed" from="Content/Buttons/Quit" to="." method="_on_Quit_pressed"]

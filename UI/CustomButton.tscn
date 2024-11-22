@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d1bvmewrcmwdj"]
+
+[node name="Continue" type="Button"]
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Continue"

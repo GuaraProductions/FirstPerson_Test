@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvuj5fhobxtpt"]
+
+[ext_resource type="Texture2D" uid="uid://b8kssqq0ruclt" path="res://assets/Textures/Wood_25-128x128.png" id="1_7mtkg"]
+[ext_resource type="Texture2D" uid="uid://qvtakcftdgr0" path="res://assets/Textures/Bricks_02-128x128.png" id="2_7ajwq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwlkg"]
+albedo_texture = ExtResource("1_7mtkg")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sjcok"]
+material = SubResource("StandardMaterial3D_qwlkg")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bevt4"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eermi"]
+albedo_texture = ExtResource("2_7ajwq")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ovn5f"]
+material = SubResource("StandardMaterial3D_eermi")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_53nhx"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="MapProps" type="Node3D"]
+
+[node name="Wood" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_sjcok")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wood"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wood/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bevt4")
+
+[node name="Brick" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ovn5f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Brick"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Brick/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_53nhx")
