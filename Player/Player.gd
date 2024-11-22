@@ -16,7 +16,7 @@ func _ready() -> void:
 	# Enable the AnimationTree to start playing animations.
 	animation_tree.active = true
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 
 	if event is InputEventMouseMotion:
 		# Horizontal rotation (yaw) controls the character turning left or right.
