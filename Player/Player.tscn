@@ -7510,7 +7510,7 @@ bones/42/rotation = Quaternion(5.29396e-23, 1.58819e-22, 0, 1)
 bones/42/scale = Vector3(1, 1, 1)
 
 [node name="NurbsPath_001" type="BoneAttachment3D" parent="Body/RootNode/CharacterArmature/Skeleton3D"]
-transform = Transform3D(0.998309, -0.0134791, -0.0565451, 0.00279983, 0.982765, -0.184837, 0.0580619, 0.184366, 0.981141, 0.000558474, 0.00197579, -0.000736836)
+transform = Transform3D(0.998309, -0.0134795, -0.0565449, 0.0028003, 0.982765, -0.184837, 0.0580619, 0.184366, 0.981141, 0.000558471, 0.00197579, -0.000736838)
 bone_name = "NurbsPath.001"
 bone_idx = 9
 
