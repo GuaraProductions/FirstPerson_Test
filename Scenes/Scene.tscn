@@ -1,16 +1,16 @@
 [gd_scene load_steps=127 format=4 uid="uid://b8fodmq3kvjsy"]
 
 [ext_resource type="PackedScene" uid="uid://by76uj4wiwtu" path="res://Player/Player.tscn" id="1"]
-[ext_resource type="Script" path="res://Scenes/Scene.gd" id="2"]
-[ext_resource type="Shader" path="res://Shaders/ScreenNoise.gdshader" id="2_03461"]
-[ext_resource type="Shader" path="res://Shaders/VHS.gdshader" id="3_30ecx"]
+[ext_resource type="Script" uid="uid://nnc3f0cbsuh5" path="res://Scenes/Scene.gd" id="2"]
+[ext_resource type="Shader" uid="uid://ctj5k7lme6xkd" path="res://Shaders/ScreenNoise.gdshader" id="2_03461"]
+[ext_resource type="Shader" uid="uid://7e3yokj1oif3" path="res://Shaders/VHS.gdshader" id="3_30ecx"]
 [ext_resource type="Environment" uid="uid://ckph20vwcww3n" path="res://Scenes/Scene.tres" id="3_jeh2l"]
 [ext_resource type="PackedScene" uid="uid://j60dqsg5mgoa" path="res://UI/Pause.tscn" id="3_rah0q"]
 [ext_resource type="MeshLibrary" uid="uid://cbq5xjjgpiuqi" path="res://MapBuilder/MapProps.tres" id="5_8wwuv"]
 [ext_resource type="Texture2D" uid="uid://b8kssqq0ruclt" path="res://assets/Textures/Wood_25-128x128.png" id="6_0qbi4"]
 [ext_resource type="PackedScene" uid="uid://bnwwc51lgm2mu" path="res://Objects/CeilingFan.tscn" id="6_88roj"]
 [ext_resource type="Texture2D" uid="uid://qvtakcftdgr0" path="res://assets/Textures/Bricks_02-128x128.png" id="7_htk5g"]
-[ext_resource type="Shader" path="res://Shaders/ItemHighlight.gdshader" id="8_fow8h"]
+[ext_resource type="Shader" uid="uid://c74nhb1m04v56" path="res://Shaders/ItemHighlight.gdshader" id="8_fow8h"]
 [ext_resource type="PackedScene" uid="uid://nm8kqwi5s0h3" path="res://assets/Objects/Books.glb" id="19_ph45v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_00ksn"]
@@ -39,12 +39,12 @@ shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ywpb"]
 shader = ExtResource("2_03461")
-shader_parameter/opacity = null
+shader_parameter/opacity = 0.0
 shader_parameter/pixel_size = 0.01
 shader_parameter/greyscale = false
-shader_parameter/contrast = null
-shader_parameter/pixel_colors = null
-shader_parameter/background_color = null
+shader_parameter/contrast = 0.0
+shader_parameter/pixel_colors = Color(0, 0, 0, 1)
+shader_parameter/background_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwlkg"]
 albedo_texture = ExtResource("6_0qbi4")
@@ -1955,6 +1955,7 @@ size = Vector3(0.203369, 0.651123, 0.182251)
 script = ExtResource("2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="VHS" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_00ksn")

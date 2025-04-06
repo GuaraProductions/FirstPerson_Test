@@ -1,6 +1,6 @@
 [gd_scene load_steps=51 format=4 uid="uid://by76uj4wiwtu"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1"]
+[ext_resource type="Script" uid="uid://cgksqokgiyupd" path="res://Player/Player.gd" id="1"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(3.04047, 5.47738, 1.97269)
@@ -7135,30 +7135,30 @@ tracks/38/keys = PackedFloat32Array(0, 1, -0.0789317, -0.297914, 0.141663, 0.940
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tpco0"]
 _data = {
-"Attacking_Idle": SubResource("Animation_yx3if"),
-"CharacterArmature|Attacking_Idle": SubResource("Animation_l57yw"),
-"CharacterArmature|Dagger_Attack": SubResource("Animation_dh388"),
-"CharacterArmature|Dagger_Attack2": SubResource("Animation_akkj7"),
-"CharacterArmature|Death": SubResource("Animation_68c1a"),
-"CharacterArmature|Idle": SubResource("Animation_ng63d"),
-"CharacterArmature|PickUp": SubResource("Animation_hh5w4"),
-"CharacterArmature|Punch": SubResource("Animation_x3swb"),
-"CharacterArmature|RecieveHit": SubResource("Animation_gualu"),
-"CharacterArmature|RecieveHit_Attacking": SubResource("Animation_fq74a"),
-"CharacterArmature|Roll": SubResource("Animation_7kel3"),
-"CharacterArmature|Run": SubResource("Animation_6q53y"),
-"CharacterArmature|Walk": SubResource("Animation_8f8j3"),
-"Dagger_Attack": SubResource("Animation_4cgmg"),
-"Dagger_Attack2": SubResource("Animation_8ht4w"),
-"Death": SubResource("Animation_aflqd"),
-"Idle": SubResource("Animation_0thjj"),
-"PickUp": SubResource("Animation_rrg0t"),
-"Punch": SubResource("Animation_a6ljh"),
-"RecieveHit": SubResource("Animation_qdmwo"),
-"RecieveHit_Attacking": SubResource("Animation_dd3ve"),
-"Roll": SubResource("Animation_5bch6"),
-"Run": SubResource("Animation_ggdep"),
-"Walk": SubResource("Animation_3rssp")
+&"Attacking_Idle": SubResource("Animation_yx3if"),
+&"CharacterArmature|Attacking_Idle": SubResource("Animation_l57yw"),
+&"CharacterArmature|Dagger_Attack": SubResource("Animation_dh388"),
+&"CharacterArmature|Dagger_Attack2": SubResource("Animation_akkj7"),
+&"CharacterArmature|Death": SubResource("Animation_68c1a"),
+&"CharacterArmature|Idle": SubResource("Animation_ng63d"),
+&"CharacterArmature|PickUp": SubResource("Animation_hh5w4"),
+&"CharacterArmature|Punch": SubResource("Animation_x3swb"),
+&"CharacterArmature|RecieveHit": SubResource("Animation_gualu"),
+&"CharacterArmature|RecieveHit_Attacking": SubResource("Animation_fq74a"),
+&"CharacterArmature|Roll": SubResource("Animation_7kel3"),
+&"CharacterArmature|Run": SubResource("Animation_6q53y"),
+&"CharacterArmature|Walk": SubResource("Animation_8f8j3"),
+&"Dagger_Attack": SubResource("Animation_4cgmg"),
+&"Dagger_Attack2": SubResource("Animation_8ht4w"),
+&"Death": SubResource("Animation_aflqd"),
+&"Idle": SubResource("Animation_0thjj"),
+&"PickUp": SubResource("Animation_rrg0t"),
+&"Punch": SubResource("Animation_a6ljh"),
+&"RecieveHit": SubResource("Animation_qdmwo"),
+&"RecieveHit_Attacking": SubResource("Animation_dd3ve"),
+&"Roll": SubResource("Animation_5bch6"),
+&"Run": SubResource("Animation_ggdep"),
+&"Walk": SubResource("Animation_3rssp")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sny81"]

@@ -102,6 +102,21 @@ material = SubResource("StandardMaterial3D_0crra")
 radius = 0.04
 height = 0.05
 
+[sub_resource type="Animation" id="Animation_mpd51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_f4o2f"]
 resource_name = "ceiling-fan-spin"
 loop_mode = 1
@@ -118,25 +133,10 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_mpd51"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Model:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0jrty"]
 _data = {
-"RESET": SubResource("Animation_mpd51"),
-"ceiling-fan-spin": SubResource("Animation_f4o2f")
+&"RESET": SubResource("Animation_mpd51"),
+&"ceiling-fan-spin": SubResource("Animation_f4o2f")
 }
 
 [node name="Ceiling Fan" type="Node3D"]

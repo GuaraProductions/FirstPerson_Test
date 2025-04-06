@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://j60dqsg5mgoa"]
 
-[ext_resource type="Script" path="res://UI/Pause.gd" id="1"]
+[ext_resource type="Script" uid="uid://dhtldy7582llc" path="res://UI/Pause.gd" id="1"]
 [ext_resource type="LabelSettings" uid="uid://b1d1flvpxn38c" path="res://UI/Titlecard.tres" id="2_ehhvs"]
 [ext_resource type="PackedScene" uid="uid://d1bvmewrcmwdj" path="res://UI/CustomButton.tscn" id="3_ukk3w"]
 

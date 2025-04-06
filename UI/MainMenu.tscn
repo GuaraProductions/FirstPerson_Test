@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4ay6jhnlfkal"]
 
-[ext_resource type="Script" path="res://UI/MainMenu.gd" id="1"]
+[ext_resource type="Script" uid="uid://du8oeben6ikmd" path="res://UI/MainMenu.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://b8fodmq3kvjsy" path="res://Scenes/Scene.tscn" id="2_grdn0"]
 [ext_resource type="LabelSettings" uid="uid://b1d1flvpxn38c" path="res://UI/Titlecard.tres" id="3_wgjxj"]
 [ext_resource type="PackedScene" uid="uid://d1bvmewrcmwdj" path="res://UI/CustomButton.tscn" id="4_pjkfk"]

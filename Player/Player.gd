@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export var MAX_SPEED = 10  # Maximum speed for the character's movement.
 @export var FRICTION = 16  # Controls how quickly the character slows down when not moving.
 @export var JUMP_VELOCITY = 150  # Initial upward velocity when the character jumps.
+@export var JOYSTICK_SENSITIVITY = 8
 
 @onready var camera = $Camera 
 @onready var flashlight = $Camera/SpotLight  
@@ -39,6 +40,17 @@ func _physics_process(delta: float) -> void:
 	# Apply gravity if the character is not on the floor.
 	if not is_on_floor():
 		velocity += get_gravity() * delta  # Gravity is added to the Y component of the velocity.
+
+	var right_stick_vector = Input.get_vector("right_joystick_left",
+											"right_joystick_right",
+											"right_joystick_up",
+											"right_joystick_down")
+	
+	if right_stick_vector != Vector2.ZERO:
+		
+		var event := InputEventMouseMotion.new()
+		event.relative = right_stick_vector * JOYSTICK_SENSITIVITY
+		Input.parse_input_event(event)  # Simulate mouse movement
 
 	# Gather input from the keyboard and normalize it for consistent movement.
 	var input_vector = Vector2(
