@@ -44,12 +44,12 @@ Este projeto é uma demonstração para a criação de um personagem em primeira
 ## Modelos e Shaders usados:
 
 ### Shaders
-https://godotshaders.com/shader/ps1-psx-postprocessing/
-https://godotshaders.com/shader/psx-style-camera-shader/
-https://godotshaders.com/shader/collectable-item-shining-highlight/
-https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
-https://godotshaders.com/shader/analog-monitor/
+ - https://godotshaders.com/shader/ps1-psx-postprocessing/
+ - https://godotshaders.com/shader/psx-style-camera-shader/
+ - https://godotshaders.com/shader/collectable-item-shining-highlight/
+ - https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
+ - https://godotshaders.com/shader/analog-monitor/
 
 ### Modelos
-https://poly.pizza/bundle/Furniture-Kit-NoG1sEUD1z
-https://poly.pizza/m/DgOCW9ZCRJ
+ - https://poly.pizza/bundle/Furniture-Kit-NoG1sEUD1z
+ - https://poly.pizza/m/DgOCW9ZCRJ
