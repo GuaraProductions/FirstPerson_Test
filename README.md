@@ -18,16 +18,16 @@ This project serves as a demo for creating a first-person character. It includes
 ## Used assets and shaders:
 
 ### Shaders
-https://godotshaders.com/shader/ps1-psx-postprocessing/
-https://godotshaders.com/shader/psx-style-camera-shader/
-https://godotshaders.com/shader/collectable-item-shining-highlight/
-https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
-https://godotshaders.com/shader/analog-monitor/
+ - https://godotshaders.com/shader/ps1-psx-postprocessing/
+ - https://godotshaders.com/shader/psx-style-camera-shader/
+ - https://godotshaders.com/shader/collectable-item-shining-highlight/
+ - https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
+ - https://godotshaders.com/shader/analog-monitor/
 
 ### Models
-https://poly.pizza/bundle/Furniture-Kit-NoG1sEUD1z
-https://poly.pizza/m/DgOCW9ZCRJ
-
+ - https://poly.pizza/bundle/Furniture-Kit-NoG1sEUD1z
+ - https://poly.pizza/m/DgOCW9ZCRJ
+   
 # PT-BR
 
 ## Introdução
